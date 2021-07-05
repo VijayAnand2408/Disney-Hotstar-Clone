@@ -1,15 +1,52 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import styled from "styled-components";
+import { LoginUser } from './Header';
+import { useHistory } from "react-router-dom";
 
 
 
 const Login = (props) => {
+
+ const history = useHistory(); 
+ const [name, setname] = useState("");
+ const [pword, setpword] = useState("");
+
+ const verify = ()=>{
+  if(name==="Admin" && pword==="123"){
+     Verified();
+ }else{
+    alert("Invalid UserName and Password!!!")
+  }
+}
+
+ function Verified(){
+   return history.push("/admin");
+ }
+
+
   return (
+    <>
     <Container>
       <Content>
         <CTA>
-          <CTALogoOne src="/images/cta-logo-one.svg" alt="" />
-          <SignUp >GET ALL THERE</SignUp>
+          <Box>
+            <Input>
+              Username:
+              <User placeholder="Username" 
+              type="text" 
+              value={name}
+              onChange={(e)=>setname(e.target.value)}>
+              </User><br />
+              Password:
+              <User placeholder="Password" 
+              type="password" 
+              value={pword} 
+              onChange={(e)=>setpword(e.target.value)}>
+                </User><br />
+              </Input>
+              <SignUp onClick={verify}>LOGIN</SignUp><Line />
+              <LoginUser />
+          </Box>
           <Description>
             Get Premier Access to Raya and the Last Dragon for an additional fee
             with a Disney+ subscription. As of 03/26/21, the price of Disney+
@@ -20,6 +57,7 @@ const Login = (props) => {
         <BgImage />
       </Content>
     </Container>
+  </>
   );
 };
 
@@ -65,29 +103,69 @@ const CTA = styled.div`
   flex-direction: column;
 `;
 
-const CTALogoOne = styled.img`
-  margin-bottom: 12px;
-  max-width: 600px;
-  min-height: 1px;
-  display: block;
-  width: 100%;
+const Box=styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 22rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  background-color: rgba(255,255,255,0.1);
+  box-shadow:10px 10px 10px black;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  margin-bottom:4rem;
+  margin-top: 7rem;
+  transform: all 0.3s ease-in-out;
+  font-family: Avenir-Roman, sans-serif;
+
+
+  &:hover{
+    transform: scale(1.1);
+    backdrop-filter: blur(5px);
+    box-shadow:10px 10px 10px black;
+    font-weight: bolder;
+  }
 `;
 
-const SignUp = styled.a`
+const User=styled.input`
+  width: 15rem;
+  border-radius: 0.4rem;
+  height: 2rem;
+`;
+
+const Input=styled.div`
+   display: flex;
+   flex-direction: column;
+   text-align: left;
+   font-family: 'Yomogi', cursive;
+   
+`;
+
+const SignUp = styled.button`
   font-weight: bold;
   color: #f9f9f9;
   background-color: #0063e5;
-  margin-bottom: 12px;
-  width: 100%;
+  
+  width: 35%;
   letter-spacing: 1.5px;
-  font-size: 18px;
+  
   padding: 16.5px 0;
   border: 1px solid transparent;
   border-radius: 4px;
+  height: 3rem;
 
   &:hover {
     background-color: #0483ee;
+    cursor: pointer;
   }
+`;
+
+const Line=styled.hr`
+  width: 60%;
+  margin-top: 5%;
+  border:.5px solid gray;
 `;
 
 const Description = styled.p`

@@ -66,7 +66,7 @@ const Header = (props) => {
       </Logo>
 
       {!userName ? (
-        <Login onClick={handleAuth}>Login</Login>
+        <LoginUser onClick={handleAuth}>Login</LoginUser>
       ) : (
         <div>
           <NavMenu>
@@ -201,7 +201,7 @@ const NavMenu = styled.div`
   } */
 `;
 
-const Login = styled.a`
+const LoginUser = styled.a`
   background-color: rgba(0, 0, 0, 0.6);
   padding: 8px 16px;
   text-transform: uppercase;
@@ -260,4 +260,5 @@ const SignOut = styled.div`
   }
 `;
 
+export {LoginUser};
 export default Header;
