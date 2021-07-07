@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import React from 'react'
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -10,8 +9,6 @@ import {
   setUserLoginDetails,
   setSignOutState,
 } from "../features/user/userSlice";
-
-
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -66,9 +63,9 @@ const Header = (props) => {
       </Logo>
 
       {!userName ? (
-        <LoginUser onClick={handleAuth}>Login</LoginUser>
+        <Login onClick={handleAuth}>Login</Login>
       ) : (
-        <div>
+        <>
           <NavMenu>
             <a href="/home">
               <img src="/images/home-icon.svg" alt="HOME" />
@@ -101,7 +98,7 @@ const Header = (props) => {
               <span onClick={handleAuth}>Sign out</span>
             </DropDown>
           </SignOut>
-        </div>
+        </>
       )}
     </Nav>
   );
@@ -201,7 +198,7 @@ const NavMenu = styled.div`
   } */
 `;
 
-const LoginUser = styled.a`
+const Login = styled.a`
   background-color: rgba(0, 0, 0, 0.6);
   padding: 8px 16px;
   text-transform: uppercase;
@@ -214,7 +211,6 @@ const LoginUser = styled.a`
     background-color: #f9f9f9;
     color: #000;
     border-color: transparent;
-    cursor:pointer;
   }
 `;
 
@@ -260,5 +256,4 @@ const SignOut = styled.div`
   }
 `;
 
-export {LoginUser};
 export default Header;

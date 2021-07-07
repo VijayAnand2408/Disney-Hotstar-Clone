@@ -1,6 +1,5 @@
 import React,{ useState } from 'react'
 import styled from "styled-components";
-import { LoginUser } from './Header';
 import { useHistory } from "react-router-dom";
 
 
@@ -25,7 +24,7 @@ const Login = (props) => {
 
 
   return (
-    <>
+   <> 
     <Container>
       <Content>
         <CTA>
@@ -45,7 +44,7 @@ const Login = (props) => {
                 </User><br />
               </Input>
               <SignUp onClick={verify}>LOGIN</SignUp><Line />
-              <LoginUser />
+              
           </Box>
           <Description>
             Get Premier Access to Raya and the Last Dragon for an additional fee
@@ -57,7 +56,7 @@ const Login = (props) => {
         <BgImage />
       </Content>
     </Container>
-  </>
+   </>
   );
 };
 

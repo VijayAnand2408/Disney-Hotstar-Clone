@@ -4,7 +4,7 @@ import React from 'react'
 function Admin() {
     return (
         <div>
-            Hello There
+            <p>Hello There</p>
         </div>
     )
 }

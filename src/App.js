@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import React from 'react'
 import Admin from "./components/Admin";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Header />
         <Switch> 
                   <Route exact path="/"><Login /></Route>
-                  
+                  <Route path="/home"><Home /></Route>
+                  <Route exact path="/admin"><Admin /></Route>
           </Switch>
       </Router>
     
