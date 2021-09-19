@@ -1,62 +1,60 @@
-import React,{ useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import Admin from './Admin';
 
 
 
 const Login = (props) => {
 
- const history = useHistory(); 
- const [name, setname] = useState("");
- const [pword, setpword] = useState("");
-
- const verify = ()=>{
-  if(name==="Admin" && pword==="123"){
-     Verified();
- }else{
-    alert("Invalid UserName and Password!!!")
+  const history = useHistory();
+  const [name, setname] = useState("");
+  const [pword, setpword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
+  
+  const buttonHandler = (e) => {
+    e.preventDefault()
+    if (name === "Admin" && pword === "123") {
+     history.push('/admin')
+    }else {
+      window.alert("Please Sign Up!!!")
+    }
   }
-}
-
- function Verified(){
-   return history.push("/admin");
- }
-
 
   return (
-   <> 
-    <Container>
-      <Content>
-        <CTA>
-          <Box>
-            <Input>
-              Username:
-              <User placeholder="Username" 
-              type="text" 
-              value={name}
-              onChange={(e)=>setname(e.target.value)}>
-              </User><br />
-              Password:
-              <User placeholder="Password" 
-              type="password" 
-              value={pword} 
-              onChange={(e)=>setpword(e.target.value)}>
+    <>
+      <Container>
+        <Content>
+          <CTA>
+            <Box>
+              <Input>
+                Username:
+                <User placeholder="Username"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setname(e.target.value)}>
+                </User><br />
+                Password:
+                <User placeholder="Password"
+                  type="password"
+                  value={pword}
+                  onChange={(e) => setpword(e.target.value)}>
                 </User><br />
               </Input>
-              <SignUp onClick={verify}>LOGIN</SignUp><Line />
-              
-          </Box>
-          <Description>
-            Get Premier Access to Raya and the Last Dragon for an additional fee
-            with a Disney+ subscription. As of 03/26/21, the price of Disney+
-            and The Disney Bundle will increase by $1.
-          </Description>
-          <CTALogoTwo src="/images/cta-logo-two.png" alt="" />
-        </CTA>
-        <BgImage />
-      </Content>
-    </Container>
-   </>
+              <SignUp onClick={buttonHandler}>LOGIN</SignUp><Line />
+
+            </Box>
+            <Description>
+              Get Premier Access to Raya and the Last Dragon for an additional fee
+              with a Disney+ subscription. As of 03/26/21, the price of Disney+
+              and The Disney Bundle will increase by $1.
+            </Description>
+            <CTALogoTwo src="/images/cta-logo-two.png" alt="" />
+          </CTA>
+          <BgImage />
+        </Content>
+      </Container>
+    </>
   );
 };
 
@@ -102,7 +100,7 @@ const CTA = styled.div`
   flex-direction: column;
 `;
 
-const Box=styled.div`
+const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -119,22 +117,15 @@ const Box=styled.div`
   transform: all 0.3s ease-in-out;
   font-family: Avenir-Roman, sans-serif;
 
-
-  &:hover{
-    transform: scale(1.1);
-    backdrop-filter: blur(5px);
-    box-shadow:10px 10px 10px black;
-    font-weight: bolder;
-  }
 `;
 
-const User=styled.input`
+const User = styled.input`
   width: 15rem;
   border-radius: 0.4rem;
   height: 2rem;
 `;
 
-const Input=styled.div`
+const Input = styled.div`
    display: flex;
    flex-direction: column;
    text-align: left;
@@ -161,7 +152,7 @@ const SignUp = styled.button`
   }
 `;
 
-const Line=styled.hr`
+const Line = styled.hr`
   width: 60%;
   margin-top: 5%;
   border:.5px solid gray;

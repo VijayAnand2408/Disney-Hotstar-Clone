@@ -63,7 +63,7 @@ const Header = (props) => {
       </Logo>
 
       {!userName ? (
-        <Login onClick={handleAuth}>Login</Login>
+        <Login onClick={handleAuth}>Sign Up</Login>
       ) : (
         <>
           <NavMenu>
@@ -117,6 +117,11 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 3;
+
+  @media (max-width: 768px){
+    
+  }
+
 `;
 
 const Logo = styled.a`
@@ -193,9 +198,9 @@ const NavMenu = styled.div`
     }
   }
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
-  } */
+  }
 `;
 
 const Login = styled.a`
@@ -211,6 +216,7 @@ const Login = styled.a`
     background-color: #f9f9f9;
     color: #000;
     border-color: transparent;
+    cursor: pointer;
   }
 `;
 
@@ -255,5 +261,7 @@ const SignOut = styled.div`
     }
   }
 `;
+
+
 
 export default Header;

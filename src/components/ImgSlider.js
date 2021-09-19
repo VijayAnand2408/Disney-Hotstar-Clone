@@ -7,7 +7,7 @@ const ImgSlider = (props) => {
   let settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -78,6 +78,8 @@ const Carousel = styled(Slider)`
   .slick-next {
     right: -75px;
   }
+
+ 
 `;
 
 const Wrap = styled.div`
@@ -94,9 +96,18 @@ const Wrap = styled.div`
     position: relative;
     padding: 4px;
 
+    @media (max-width: 768px){
+      min-height: 9rem;
+  }
+
     img {
       width: 100%;
       height: 100%;
+
+      @media (max-width: 768px){
+      min-height: 9rem;
+  }
+
     }
 
     &:hover {
@@ -106,5 +117,8 @@ const Wrap = styled.div`
     }
   }
 `;
+
+
+
 
 export default ImgSlider;
