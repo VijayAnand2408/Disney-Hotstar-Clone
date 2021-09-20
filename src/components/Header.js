@@ -21,6 +21,8 @@ const Header = (props) => {
       if (user) {
         setUser(user);
         history.push("/home");
+      }else {
+        history.push('/');
       }
     });
   }, [userName]);
