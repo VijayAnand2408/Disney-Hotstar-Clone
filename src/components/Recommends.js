@@ -2,39 +2,98 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectRecommend } from "../features/movie/movieSlice";
+import React, { Component } from "react";
+import Slider from "react-slick";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "red" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onClick}
+    />
+  );
+}
+
+    const settings = {
+      dots: true,
+      infinite: false,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />
+    };
 
 const Recommends = (props) => {
   const movies = useSelector(selectRecommend);
   console.log(movies, ":🛢️");
 
+  
+
   return (
-    <Container>
+   <>
+   <Container>
       <h4>Recommended for You</h4>
-      
-        {movies &&
-          movies.map((movie, key) => (
-            <Content>
-         <Wrap>
-           <Link to=""></Link>
-            </Wrap>
-            <Wrap>
-           <Link to=""></Link>
-            </Wrap>
-            <Wrap>
-           <Link to=""></Link>
-            </Wrap>
-            <Wrap>
-           <Link to=""></Link>
-            </Wrap>
-            
-            </Content> ))}
-      
+      <Content>
+      <Sli>
+        <h2>Custom Arrows</h2>
+        <Slider {...settings}>
+       <Wrap>
+         <Link>
+         <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg" />
+         </Link>
+       </Wrap>
+       <Wrap>
+         <Link>
+         <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg" />
+         </Link>
+       </Wrap>
+       <Wrap>
+         <Link>
+         <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg" />
+         </Link>
+       </Wrap>
+       <Wrap>
+         <Link>
+         <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg" />
+         </Link>
+       </Wrap>
+       <Wrap>
+         <Link>
+         <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg" />
+         </Link>
+       </Wrap>
+       <Wrap>
+         <Link>
+         <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg" />
+         </Link>
+       </Wrap>
+       </Slider>
+      </Sli>
+      </Content>
     </Container>
+    </>
   );
 };
 
 const Container = styled.div`
   padding: 0 0 26px;
+`;
+
+const Sli = styled.div`
+ width : 80rem
 `;
 
 const Content = styled.div`

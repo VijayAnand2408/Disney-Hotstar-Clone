@@ -21,8 +21,8 @@ export default function App() {
             <Route exact path='/admin'><Admin /></Route>
             <Route exact path="/home"><Home /></Route>
             <Route exact path="/detail/:id"><Detail /></Route>
-            <Route component={Notfound} />
           </adminContext.Provider>
+            <Route component={Notfound} />
         </Switch>
       </Router>
 
