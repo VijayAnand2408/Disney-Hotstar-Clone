@@ -209,6 +209,7 @@ const NavMenu = styled.div`
 
 const Login = styled.a`
   background-color: rgba(0, 0, 0, 0.6);
+  color: #000;
   padding: 8px 16px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -217,8 +218,8 @@ const Login = styled.a`
   transition: all 0.2s ease 0s;
 
   &:hover {
-    background-color: #f9f9f9;
-    color: #000;
+    background-color: #000;
+    color: rgba(0, 0, 0, 0.6);
     border-color: transparent;
     cursor: pointer;
   }

@@ -16,7 +16,6 @@ const Login = (props) => {
     if (name === "Admin" && pword === "123") {
     setstate(true)
     history.push('/admin')
-    console.log(state)
     }else {
       window.alert("Please Sign Up!!!")
     }
