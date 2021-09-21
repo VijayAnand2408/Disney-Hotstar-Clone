@@ -172,6 +172,8 @@ const NavMenu = styled.div`
       padding: 2px 0px;
       white-space: nowrap;
       position: relative;
+      cursor: pointer;
+
 
       &:before {
         background-color: rgb(249, 249, 249);

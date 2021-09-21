@@ -40,7 +40,7 @@ const Detail = (props) => {
           </Player>
           <Trailer>
             <img src="/images/play-icon-white.png" alt="" />
-            <span>Trailer</span>
+            <a href=""><span>Trailer</span></a>
           </Trailer>
           <AddList>
             <span />
@@ -213,7 +213,9 @@ const GroupWatch = styled.div`
 
 const SubTitle = styled.div`
   color: rgb(249, 249, 249);
-  font-size: 15px;
+  font-size: 2rem;
+  font-weight: 900;
+  /* font-size: 15px; */
   min-height: 20px;
 
   @media (max-width: 768px) {
