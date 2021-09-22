@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import db from "../../firebase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { adminContext } from '../../App'
 
 
 
@@ -15,11 +14,10 @@ function Add() {
         backgroundImg: '',
         subTitle: '',
         description: '',
+        iframe: '',
         type: ''
     }
 
-
-    const [state, setstate] = useContext(adminContext);
     const [values, setvalues] = useState(initialState);
     const history = useHistory();
 
@@ -84,8 +82,12 @@ function Add() {
                         </div>
                     </div>
                     <div className="form-group">
+                        <label>Trailer</label>
+                        <input className="form-control" placeholder="Place the Trailer Iframe" value={values.iframe} name="iframe" onChange={handler} />
+                    </div>
+                    <div className="form-group">
                         <label>Description</label>
-                        <input type="textarea" className="form-control" placeholder="description" value={values.description} name="description" onChange={handler} />
+                        <input className="form-control" placeholder="description" value={values.description} name="description" onChange={handler} />
                     </div>
                     <button type="submit" className="btn btn-primary col mt-5" onClick={hand} >Add</button>
                 </form>

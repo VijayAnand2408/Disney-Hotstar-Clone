@@ -18,6 +18,7 @@ function Show({ data, id }) {
                         <th scope="col">BackGround-Img</th>
                         <th scope="col">Subtitle</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Tralier</th>
                         <th scope="col">type</th>
                         <th scope="col">Edit/Delete</th>
                     </tr>
@@ -37,6 +38,7 @@ function Show({ data, id }) {
                                     <td scope="col-3">{movies.backgroundImg}</td>
                                     <td scope="col-3">{movies.subTitle}</td>
                                     <td scope="col-3">{movies.description}</td>
+                                    <td scope="col-3">{movies.iframe}</td>
                                     <td scope="col-4">{movies.type}</td>
                                     <Wap>
                                         <Link to={`/edit/` + id[i]}>
@@ -82,6 +84,7 @@ h3{
     text-align: center;
     font-family: 'Yomogi', cursive;
     font-weight: 900;
+    margin-top: 5rem;
 }
 
 @media screen and (max-width: 640px) {

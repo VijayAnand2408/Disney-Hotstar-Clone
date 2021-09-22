@@ -1,12 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import Header from './Header';
-import { adminContext } from '../App'
-
 
 const Login = (props) => {
-  const [state, setstate] = useContext(adminContext)
   const history = useHistory();
   const [name, setname] = useState("");
   const [pword, setpword] = useState("");

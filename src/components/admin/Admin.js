@@ -49,7 +49,6 @@ function Admin(props) {
     return (
         <>
             <AdminHead />
-            <Sam data={list} id={id} />
             <Dah>
                 <ul className="find">
                     <h3>Add</h3>
@@ -58,6 +57,7 @@ function Admin(props) {
                     </Link>
                 </ul>
             </Dah>
+            <Sam data={list} id={id} />
         </>
     )
 }
@@ -67,6 +67,7 @@ export default Admin;
 const Dah = styled.div`
 h3{
   text-decoration: none;
+  margin-top: 5rem;
 }
 
 li{

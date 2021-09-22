@@ -14,6 +14,7 @@ function Delete() {
         backgroundImg: '',
         subTitle: '',
         description: '',
+        iframe: '',
         type: ''
     }
     const history = useHistory();
@@ -102,6 +103,10 @@ function Delete() {
                             <label >Title-Image</label>
                             <input className="form-control" placeholder="Title Image Url" value={values.titleImg} name="titleImg" onChange={handler} />
                         </div>
+                    </div>
+                    <div className="form-group">
+                        <label>Trailer</label>
+                        <input className="form-control" placeholder="Place the Trailer Iframe" value={values.iframe} name="iframe" onChange={handler} />
                     </div>
                     <div className="form-group">
                         <label>Description</label>
