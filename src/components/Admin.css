@@ -11,7 +11,7 @@
     align-items: center;
     height: 100px;
     width: 100px;
-    margin: 50px;
+    /* margin: 50px; */
     border-radius: 50%;
     background: #090B13;
     box-shadow: rgba(26, 28, 36, 0.83) -6px -6px 26px 0px, rgba(0, 0, 0, 0.51) 6px 6px 16px 0px;
@@ -30,6 +30,8 @@
       ul {
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          margin-left: 12.5rem;
         }
     }
   
@@ -43,7 +45,17 @@
 }
 
 .find{
-    height: 7rem;
-    width: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+h3{
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Yomogi', cursive;
+  font-weight: 900;
+}
+
 

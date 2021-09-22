@@ -2,10 +2,30 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import db from "../firebase";
+import {
+  selectUserName,
+} from "../features/user/userSlice";
+import { auth } from "../firebase";
+import {  useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+
+
 
 const Detail = (props) => {
   const { id } = useParams();
   const [detailData, setDetailData] = useState({});
+  const userName = useSelector(selectUserName);
+  const history = useHistory();
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        history.push('/');
+      }
+    });
+  }, [userName]);
 
   useEffect(() => {
     db.collection("movies")

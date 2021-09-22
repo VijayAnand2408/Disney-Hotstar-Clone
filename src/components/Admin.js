@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
+import styled from "styled-components";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { adminContext } from '../App'
 import db from '../firebase'
 import Sam from './Sam'
 import './Admin.css'
+import { Link } from "react-router-dom";
 
 
 function Admin(props) {
@@ -13,22 +15,21 @@ function Admin(props) {
     const history = useHistory();
 
     useEffect(() => {
+        getMarkers();
+    }, [])
+
+    useEffect(() => {
         if (state === true) {
             history.push('/admin');
-            getMarkers()
         } else {
             history.push('/')
         }
-    }, state)
-
+    }, [state])
 
     const getMarkers = async () => {
         await db.collection('movies').get()
             .then(querySnapshot => {
                 foo(querySnapshot.docs, querySnapshot)
-                querySnapshot.forEach(a => {
-                    // console.log(a.id)
-                });
             });
     }
 
@@ -46,18 +47,32 @@ function Admin(props) {
     }
 
 
-    //    console.log(id)
 
     return (
         <>
             <Sam data={list} id={id} />
-            <ul >
-                <li><i >+</i></li>
-            </ul>
+            <Dah>
+                <ul className="find">
+                    <h3>Add</h3>
+                    <Link to={'/add'}>
+                        <li><i >+</i></li>
+                    </Link>
+                </ul>
+            </Dah>
         </>
     )
 }
 
 export default Admin;
 
+const Dah = styled.div`
+h3{
+  text-decoration: none;
+}
+
+li{
+    list-style-type:none;
+    text-decoration: none;
+}
+`;
 

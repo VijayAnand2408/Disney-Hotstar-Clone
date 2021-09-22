@@ -1,29 +1,29 @@
-import React, {  useState , useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import Header from './Header';
-import {adminContext} from '../App'
+import { adminContext } from '../App'
 
 
 const Login = (props) => {
-  const [state,setstate] = useContext(adminContext)
+  const [state, setstate] = useContext(adminContext)
   const history = useHistory();
   const [name, setname] = useState("");
   const [pword, setpword] = useState("");
-  
+
   const buttonHandler = (e) => {
     e.preventDefault()
     if (name === "Admin" && pword === "123") {
-    setstate(true)
-    history.push('/admin')
-    }else {
+      setstate(true)
+      history.push('/admin')
+    } else {
       window.alert("Please Sign Up!!!")
     }
   }
 
   return (
     <>
-    <Header/>
+      <Header />
       <Container>
         <Content>
           <CTA>
@@ -31,7 +31,7 @@ const Login = (props) => {
               <Input>
                 Username:
                 <User placeholder="Username"
-                  type="text" 
+                  type="text"
                   onChange={(e) => setname(e.target.value)}>
                 </User><br />
                 Password:

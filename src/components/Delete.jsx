@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 import db from "../firebase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { adminContext } from '../App'
 
 
 
-function Add() {
-
+function Delete() {
     const initialState = {
         title: '',
         cardImg: '',
@@ -17,19 +16,38 @@ function Add() {
         description: '',
         type: ''
     }
-
-
-    const [state, setstate] = useContext(adminContext);
-    const [values, setvalues] = useState(initialState);
     const history = useHistory();
+    const { id } = useParams();
+    const [EditDetail, setEditDetail] = useState({});
+    const [values, setvalues] = useState(initialState);
+
+
 
     useEffect(() => {
-        if (state === true) {
-            history.push('/add');
-        } else {
-            history.push('/')
-        }
-    }, [state])
+        setvalues({
+            ...EditDetail
+        });
+    }, [EditDetail])
+
+
+
+    useEffect(() => {
+        db.collection("movies")
+            .doc(id)
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    setEditDetail(doc.data());
+                } else {
+                    console.log("no such document in firebase");
+                }
+
+            })
+            .catch((error) => {
+                console.log("Error getting document:", error);
+            })
+    }, [id]);
+
 
 
 
@@ -44,8 +62,8 @@ function Add() {
 
     const hand = (e) => {
         e.preventDefault();
-        if (window.confirm("Please Confirm !")) {
-            db.collection('movies').add(values);
+        if (window.confirm('Are you sure ?')) {
+            db.collection('movies').doc(id).delete();
             history.push('/admin')
         }
     }
@@ -53,10 +71,9 @@ function Add() {
 
     return (
         <EditForm>
-            {window.alert("Remember There only 5 Types (new  ,trending  ,originals  ,recommened  ,banner) 😇")}
-            <h3 className="text-center">Add a New Movie</h3>
+            <h3 className="text-center">Before Deleting Preview It!!</h3>
             <div className="border rounded-lg ">
-                <form className="mr-5 mt-5 ml-5 mb-3">
+                <form className="mr-5 mt-5 ml-5 mb-5">
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label >Title</label>
@@ -90,14 +107,14 @@ function Add() {
                         <label>Description</label>
                         <input type="textarea" className="form-control" placeholder="description" value={values.description} name="description" onChange={handler} />
                     </div>
-                    <button type="submit" className="btn btn-primary col mt-5" onClick={hand} >Add</button>
+                    <button type="submit" className="btn btn-primary col mt-5" onClick={hand} >Delete</button>
                 </form>
             </div>
         </EditForm>
     )
 }
 
-export default Add
+export default Delete
 
 
 const EditForm = styled.div`

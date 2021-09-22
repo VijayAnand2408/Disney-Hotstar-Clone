@@ -5,6 +5,10 @@ import Home from "./components/Home";
 import Admin from "./components/Admin";
 import Notfound from "./components/Notfound";
 import Detail from "./components/Detail";
+import Edit from "./components/Edit";
+import Add from "./components/Add";
+import Delete from "./components/Delete";
+
 
 export const adminContext = React.createContext();
 
@@ -20,9 +24,12 @@ export default function App() {
             <Route exact path="/"><Login /></Route>
             <Route exact path='/admin'><Admin /></Route>
             <Route exact path="/home"><Home /></Route>
+            <Route exact path="/add"><Add /></Route>
             <Route exact path="/detail/:id"><Detail /></Route>
+            <Route exact path="/edit/:id"><Edit /></Route>
+            <Route exact path="/delete/:id"><Delete/></Route>
           </adminContext.Provider>
-            <Route component={Notfound} />
+          <Route component={Notfound} />
         </Switch>
       </Router>
 
