@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
-import db from "../firebase";
+import db from "../../firebase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 
-function Delete() {
+function Edit() {
     const initialState = {
         title: '',
         cardImg: '',
@@ -63,17 +63,18 @@ function Delete() {
     const hand = (e) => {
         e.preventDefault();
         if (window.confirm('Are you sure ?')) {
-            db.collection('movies').doc(id).delete();
+            db.collection('movies').doc(id).set({ ...values });
             history.push('/admin')
         }
+        window.location.reload();
     }
 
 
     return (
         <EditForm>
-            <h3 className="text-center">Before Deleting Preview It!!</h3>
+            <h3 className="text-center">Edit!!!</h3>
             <div className="border rounded-lg ">
-                <form className="mr-5 mt-5 ml-5 mb-5">
+                <form className="mr-5 mt-5 ml-5 mb-3">
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label >Title</label>
@@ -107,14 +108,14 @@ function Delete() {
                         <label>Description</label>
                         <input type="textarea" className="form-control" placeholder="description" value={values.description} name="description" onChange={handler} />
                     </div>
-                    <button type="submit" className="btn btn-primary col mt-5" onClick={hand} >Delete</button>
+                    <button type="submit" className="btn btn-primary col mt-5" onClick={hand} >update</button>
                 </form>
             </div>
         </EditForm>
     )
 }
 
-export default Delete
+export default Edit
 
 
 const EditForm = styled.div`

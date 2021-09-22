@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
-import db from "../firebase";
+import db from "../../firebase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { adminContext } from '../App'
+import { adminContext } from '../../App'
 
 
 
@@ -23,14 +23,12 @@ function Add() {
     const [values, setvalues] = useState(initialState);
     const history = useHistory();
 
-    useEffect(() => {
-        if (state === true) {
-            history.push('/add');
-        } else {
-            history.push('/')
-        }
-    }, [state])
 
+    if ((window.sessionStorage.getItem("AdminLogged"))) {
+        history.push('/add');
+    } else {
+        history.push('/')
+    }
 
 
     const handler = e => {
@@ -53,7 +51,6 @@ function Add() {
 
     return (
         <EditForm>
-            {window.alert("Remember There only 5 Types (new  ,trending  ,originals  ,recommened  ,banner) 😇")}
             <h3 className="text-center">Add a New Movie</h3>
             <div className="border rounded-lg ">
                 <form className="mr-5 mt-5 ml-5 mb-3">

@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import React, { useState } from 'react';
 import Home from "./components/Home";
-import Admin from "./components/Admin";
+import Admin from "./components/admin/Admin";
 import Notfound from "./components/Notfound";
 import Detail from "./components/Detail";
-import Edit from "./components/Edit";
-import Add from "./components/Add";
-import Delete from "./components/Delete";
+import Edit from "./components/admin/Edit";
+import Add from "./components/admin/Add";
+import Delete from "./components/admin/Delete";
 
 
 export const adminContext = React.createContext();

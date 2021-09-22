@@ -21,7 +21,7 @@ const Header = (props) => {
       if (user) {
         setUser(user);
         history.push("/home");
-      }else {
+      } else {
         history.push('/');
       }
     });
@@ -119,11 +119,6 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 3;
-
-  @media (max-width: 768px){
-    
-  }
-
 `;
 
 const Logo = styled.a`

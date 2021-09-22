@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { adminContext } from '../App'
-import db from '../firebase'
+import db from '../../firebase'
 import Sam from './Sam'
 import './Admin.css'
 import { Link } from "react-router-dom";
+import AdminHead from './AdminHead';
 
 
 function Admin(props) {
-    const [state, setstate] = useContext(adminContext);
     const [list, setlist] = useState([]);
     const [id, setid] = useState([])
     const history = useHistory();
@@ -18,13 +17,12 @@ function Admin(props) {
         getMarkers();
     }, [])
 
-    useEffect(() => {
-        if (state === true) {
-            history.push('/admin');
-        } else {
-            history.push('/')
-        }
-    }, [state])
+    if ((window.sessionStorage.getItem("AdminLogged"))) {
+        history.push('/admin');
+    } else {
+        history.push('/')
+    }
+
 
     const getMarkers = async () => {
         await db.collection('movies').get()
@@ -50,6 +48,7 @@ function Admin(props) {
 
     return (
         <>
+            <AdminHead />
             <Sam data={list} id={id} />
             <Dah>
                 <ul className="find">
