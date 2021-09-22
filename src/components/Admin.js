@@ -3,11 +3,13 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { adminContext } from '../App'
 import db from '../firebase'
 import Sam from './Sam'
+import './Admin.css'
 
 
 function Admin(props) {
     const [state, setstate] = useContext(adminContext);
-    const [list, setlist] = useState();
+    const [list, setlist] = useState([]);
+    const [id, setid] = useState([])
     const history = useHistory();
 
     useEffect(() => {
@@ -23,20 +25,35 @@ function Admin(props) {
     const getMarkers = async () => {
         await db.collection('movies').get()
             .then(querySnapshot => {
-                setlist(querySnapshot.docs);
+                foo(querySnapshot.docs, querySnapshot)
+                querySnapshot.forEach(a => {
+                    // console.log(a.id)
+                });
             });
     }
 
+    var data = [];
+    var Id = [];
+    const foo = (a, b) => {
+        a.map((b) => {
+            data.push(b.data())
+        })
+        setlist(data);
+        b.forEach(id => {
+            Id.push(id.id);
+        })
+        setid(Id)
+    }
+
+
+    //    console.log(id)
 
     return (
         <>
-            
-                <div className="row">
-                    <div className="col-md-8 offset-md-2">
-                        <Sam data={list}/>
-                    </div>
-                </div>
-           
+            <Sam data={list} id={id} />
+            <ul >
+                <li><i >+</i></li>
+            </ul>
         </>
     )
 }

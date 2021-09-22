@@ -1,22 +1,22 @@
-import React from 'react'
+import React, {  useEffect } from 'react'
+import Show from './Show'
+import styled from "styled-components";
 
-function sam({ data }) {
-
+function Sam({ data, id }) { 
+    // console.log(id)   
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-7 ">
-            
-                </div>
-                <div class="col-5">
-                    <div className="col"></div>
-                    <div className="col"></div>
-                    <div className="col"></div>
-                    <div className="col"></div>
-                </div>
-            </div>
-        </div>
+        <AdminD>
+            <Show data={data} id={id}/>
+        </AdminD>
     )
 }
 
-export default sam
+export default Sam
+
+const AdminD = styled.div`
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ margin: 0;
+
+`;
