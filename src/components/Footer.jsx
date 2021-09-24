@@ -32,7 +32,7 @@ const Foot = styled.div`
       font-size: larger;
 
       a{
-          color:orange;
+          color:#429bb8;
       }
   }
 
