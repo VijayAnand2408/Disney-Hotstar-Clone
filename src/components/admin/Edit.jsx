@@ -67,7 +67,6 @@ function Edit() {
             db.collection('movies').doc(id).set({ ...values });
             history.push('/admin')
         }
-        window.location.reload();
     }
 
 

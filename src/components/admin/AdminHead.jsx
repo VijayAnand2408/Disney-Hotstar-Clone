@@ -10,9 +10,8 @@ function AdminHead() {
 
 
     const out = ()=>{
-        history.puus('/')
+        history.push('/')
         window.sessionStorage.removeItem("AdminLogged");
-        window.location.reload();
     }
     return (
         <div>

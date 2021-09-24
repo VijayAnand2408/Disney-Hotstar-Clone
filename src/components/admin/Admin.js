@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import db from '../../firebase'
@@ -13,23 +13,17 @@ function Admin(props) {
     const [id, setid] = useState([])
     const history = useHistory();
 
-    useEffect(() => {
-        getMarkers();
-    }, [])
-
     if ((window.sessionStorage.getItem("AdminLogged"))) {
         history.push('/admin');
     } else {
         history.push('/')
     }
+      
+    db.collection('movies').get()
+    .then(querySnapshot => {
+        foo(querySnapshot.docs, querySnapshot)
+    });
 
-
-    const getMarkers = async () => {
-        await db.collection('movies').get()
-            .then(querySnapshot => {
-                foo(querySnapshot.docs, querySnapshot)
-            });
-    }
 
     var data = [];
     var Id = [];
