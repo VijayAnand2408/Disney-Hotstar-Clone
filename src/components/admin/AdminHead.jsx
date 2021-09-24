@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from "styled-components";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+
 
 
 function AdminHead() {
 
+  const history = useHistory();
+
+
     const out = ()=>{
+        history.puus('/')
         window.sessionStorage.removeItem("AdminLogged");
         window.location.reload();
     }
