@@ -39,7 +39,6 @@ var settings = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
-        infinite: true,
            }
     },
     {
@@ -53,8 +52,8 @@ var settings = {
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 2,
+        slidesToScroll: 2
       }
     }
   ]
@@ -87,9 +86,15 @@ const Container = styled.div`
   padding: 0 0 26px;
   width:100%;
   height: 100%;
+
+  h4{
+    margin-top: 1rem;
+  }
+  
 `;
 
 const Sli = styled.div`
+ margin-top: 2rem;
  width : 100%;
 `;
 

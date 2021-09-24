@@ -11,6 +11,7 @@ import db from "../firebase";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
 import Header from './Header'
+import Footer from "./Footer";
 
 const Home = (props) => {
   const dispatch = useDispatch();
@@ -19,6 +20,33 @@ const Home = (props) => {
   let newDisneys = [];
   let originals = [];
   let trending = [];
+
+  const slideData = [
+    {
+      index: 0,
+      headline: 'New Fashion Apparel',
+      button: 'Shop now',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/fashion.jpg'
+    },
+    {
+      index: 1,
+      headline: 'In The Wilderness',
+      button: 'Book travel',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg'
+    },
+    {
+      index: 2,
+      headline: 'For Your Current Mood',
+      button: 'Listen',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/guitar.jpg'
+    },
+    {
+      index: 3,
+      headline: 'Focus On The Writing',
+      button: 'Get Focused',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg'
+    }
+  ]
 
   useEffect(() => {
     db.collection("movies").onSnapshot((snapshot) => {
@@ -57,13 +85,14 @@ const Home = (props) => {
     <>
     <Header />
     <Container>
-      <ImgSlider />
+      <ImgSlider slides={slideData}/>
       <Viewers />
       <Recommends />
       <NewDisney />
       <Originals />
       <Trending />
     </Container>
+      <Footer/>
     </>
   );
 };

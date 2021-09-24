@@ -54,13 +54,13 @@ const Detail = (props) => {
       </ImageTitle>
       <ContentMeta>
         <Controls>
-          <Player>
+          {/* <Player>
             <img src="/images/play-icon-black.png" alt="" />
             <span>Play</span>
-          </Player>
+          </Player> */}
           <Trailer>
-            <img src="/images/play-icon-white.png" alt="" />
-            <a href=""><span>Trailer</span></a>
+            <img src="/images/play-icon-black.png" alt="" />
+            <a href={detailData.iframe} target="_blank"><span>Trailer</span></a>
           </Trailer>
           <AddList>
             <span />
@@ -177,6 +177,28 @@ const Trailer = styled(Player)`
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgb(249, 249, 249);
   color: rgb(249, 249, 249);
+
+  a{
+    text-decoration: none;
+  }
+
+  a:hover{
+    text-decoration: none;
+    color: black;
+  }
+
+  span{
+    color: white;
+    padding:1.5rem;
+  }
+
+  span:hover{
+     color: black;
+  }
+
+  img:hover{
+    color: black;
+  }
 `;
 
 const AddList = styled.div`

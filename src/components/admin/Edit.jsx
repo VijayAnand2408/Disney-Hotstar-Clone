@@ -107,7 +107,7 @@ function Edit() {
                     </div>
                     <div className="form-group">
                         <label>Trailer</label>
-                        <input className="form-control" placeholder="Place the Trailer Iframe" value={values.iframe} name="iframe" onChange={handler} />
+                        <input className="form-control" placeholder="Place the Trailer Url" value={values.iframe} name="iframe" onChange={handler} />
                     </div>
                     <div className="form-group">
                         <label>Description</label>
