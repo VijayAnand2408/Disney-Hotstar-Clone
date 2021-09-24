@@ -11,10 +11,10 @@ const Login = (props) => {
   const buttonHandler = (e) => {
     e.preventDefault()
     if (name === "Admin" && pword === "123") {
-      window.localStorage.setItem("AdminLogged", true)
+      window.sessionStorage.setItem("AdminLogged", true)
       history.push('/admin')
     } else {
-      window.localStorage.removeItem("AdminLogged")
+      window.sessionStorage.removeItem("AdminLogged")
       window.alert("Please Sign Up!!!")
     }
   }

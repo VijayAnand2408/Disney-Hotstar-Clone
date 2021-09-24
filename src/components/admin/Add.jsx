@@ -22,7 +22,7 @@ function Add() {
     const history = useHistory();
 
 
-    if ((window.localStorage.getItem("AdminLogged"))) {
+    if ((window.sessionStorage.getItem("AdminLogged"))) {
         history.push('/add');
     } else {
         history.push('/')

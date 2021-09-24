@@ -11,7 +11,7 @@ function AdminHead() {
 
     const out = ()=>{
         history.push('/')
-        window.localStorage.removeItem("AdminLogged");
+        window.sessionStorage.removeItem("AdminLogged");
     }
     return (
         <div>

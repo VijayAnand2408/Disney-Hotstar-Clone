@@ -13,7 +13,7 @@ function Admin(props) {
     const [id, setid] = useState([])
     const history = useHistory();
 
-    if ((window.localStorage.getItem("AdminLogged"))) {
+    if ((window.sessionStorage.getItem("AdminLogged"))) {
         history.push('/admin');
     } else {
         history.push('/')
