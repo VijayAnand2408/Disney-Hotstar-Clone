@@ -6,15 +6,26 @@ import {
   selectUserName,
 } from "../features/user/userSlice";
 import { auth } from "../firebase";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Header from './Header'
+
+
+
 
 const Detail = (props) => {
   const { id } = useParams();
   const [detailData, setDetailData] = useState({});
   const userName = useSelector(selectUserName);
   const history = useHistory();
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        history.push('/');
+      }
+    });
+  }, [userName]);
 
   useEffect(() => {
     db.collection("movies")
@@ -33,41 +44,38 @@ const Detail = (props) => {
   }, [id]);
 
   return (
-    <>
-    <Header/>
-      <Container>
-        <Background>
-          <img alt={detailData.title} src={detailData.backgroundImg} />
-        </Background>
+    <Container>
+      <Background>
+        <img alt={detailData.title} src={detailData.backgroundImg} />
+      </Background>
 
-        <ImageTitle>
-          <img alt={detailData.title} src={detailData.titleImg} />
-        </ImageTitle>
-        <ContentMeta>
-          <Controls>
-            {/* <Player>
+      <ImageTitle>
+        <img alt={detailData.title} src={detailData.titleImg} />
+      </ImageTitle>
+      <ContentMeta>
+        <Controls>
+          {/* <Player>
             <img src="/images/play-icon-black.png" alt="" />
             <span>Play</span>
           </Player> */}
-            <Trailer>
-              <img src="/images/play-icon-black.png" alt="" />
-              <a href={detailData.iframe} target="_blank"><span>Trailer</span></a>
-            </Trailer>
-            <AddList>
-              <span />
-              <span />
-            </AddList>
-            <GroupWatch>
-              <div>
-                <img src="/images/group-icon.png" alt="" />
-              </div>
-            </GroupWatch>
-          </Controls>
-          <SubTitle>{detailData.subTitle}</SubTitle>
-          <Description>{detailData.description}</Description>
-        </ContentMeta>
-      </Container>
-    </>
+          <Trailer>
+            <img src="/images/play-icon-black.png" alt="" />
+            <a href={detailData.iframe} target="_blank"><span>Trailer</span></a>
+          </Trailer>
+          <AddList>
+            <span />
+            <span />
+          </AddList>
+          <GroupWatch>
+            <div>
+              <img src="/images/group-icon.png" alt="" />
+            </div>
+          </GroupWatch>
+        </Controls>
+        <SubTitle>{detailData.subTitle}</SubTitle>
+        <Description>{detailData.description}</Description>
+      </ContentMeta>
+    </Container>
   );
 };
 
