@@ -73,7 +73,7 @@ const Recommends = (props) => {
             <Wrap key={key}>
               {movie.id}
               <Link to={`/detail/` + movie.id}>
-                <img src={movie.cardImg} alt={movie.title} />
+                <img src={movie.cardImg}  />
               </Link>
             </Wrap>
           ))}
