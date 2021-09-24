@@ -16,15 +16,6 @@ const Detail = (props) => {
   const userName = useSelector(selectUserName);
   const history = useHistory();
 
-
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (!user) {
-        history.push('/');
-      }
-    });
-  }, [userName]);
-
   useEffect(() => {
     db.collection("movies")
       .doc(id)

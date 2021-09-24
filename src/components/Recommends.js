@@ -28,6 +28,7 @@ function SamplePrevArrow(props) {
 }
 
 var settings = {
+
   infinite: true,
   speed: 500,
   slidesToShow: 4,
@@ -73,7 +74,7 @@ const Recommends = (props) => {
             <Wrap key={key}>
               {movie.id}
               <Link to={`/detail/` + movie.id}>
-                <img src={movie.cardImg}  />
+                <img src={movie.cardImg} />
               </Link>
             </Wrap>
           ))}
