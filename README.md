@@ -12,4 +12,4 @@ Each and Every Route Here is Protected
 
 # DEMO
 
-![Video](public/videos/AR.mp4)
+![Video](https://gifs.com/gif/qQZO30)
